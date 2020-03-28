@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #D5D5D5;
+}
+
+#container {
+    position: absolute;
+    width: 80%;
+    max-width: 1080px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+main {
+    background-color: #1F1F1F;
+    min-height: 50vh;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+main div {
+    width: 50%;
+    flex: 0 50%;
+}
