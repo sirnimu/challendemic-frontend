@@ -21,13 +21,15 @@ const maxToday = 60;
 const Dashboard = () => {
   return (
         <div id="dashboard">
-            <h3>Today:</h3>
+            <h3>Today</h3>
             <div id="progress-list">
                 {
                     data.map((obj, index) => {
                         return  <div className="participant" key={index}>
                                     <div className="name">{obj.name}</div>
-                                    <div className="progress-value">{obj.progress} / { maxToday }</div>
+                                    <div className="progress-max-value">
+                                        <div className="progress-current-value" style={{width: obj.progress / maxToday * 100 + '%'}}>{obj.progress} / {maxToday}</div>
+                                    </div>
                                 </div>
                     })
                 }
