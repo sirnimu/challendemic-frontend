@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+const axios = require('axios');
 
 const data = [
     {
@@ -18,7 +19,20 @@ const data = [
 
 const maxToday = 60;
 
+async function getData() {
+    try {
+      return await axios.get('https://glass-sylph-272217.appspot.com/api/Workouts/Paulius');
+    } catch (error) {
+      console.error(error);
+    }
+}
+
+console.log(getData());
+
 const Dashboard = () => {
+
+    
+    
   return (
         <div id="dashboard">
             <h3>Today</h3>
