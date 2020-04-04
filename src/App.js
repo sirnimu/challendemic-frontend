@@ -1,19 +1,18 @@
 import React from 'react';
-import Header from './Header/header';
-import Dashboard from './Sections/Dashboard/dashboard';
-import Notifications from './Sections/Notifications/notifications';
-import DataEntry from './Sections/DataEntry/dataEntry';
+import Header from './components/Header';
+import Dashboard from './components/Dashboard';
+import DataLog from './components/DataLog';
+import './styles/app.scss';
 
 const App = () => {
   return (
-    <div>
+    <>
          <Header />
          <main>
             <Dashboard />
-            <Notifications />
-            <DataEntry />
+            <DataLog />
          </main>
-    </div>
+    </>
   )
 }
 

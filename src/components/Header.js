@@ -1,14 +1,14 @@
 import React from 'react';
-import './style.css';
-import logo from './Challendemic-logo-horizontal.png'; 
+import logo from '../styles/res/Challendemic-logo-horizontal.png'; 
 
 const Header = () => {
   return (
     <header>
       <img src={logo} alt="logo"></img>
       <nav>
-        <div>My profile</div>
-        <div>Spreadsheet</div>
+        <div>Podium</div>
+        <div>Graphs</div>
+        <div>Settings</div>
       </nav>
     </header>
   )
