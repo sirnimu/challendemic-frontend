@@ -1,43 +1,74 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+import '../utils/user.js';
 
-const data = [
+const users = [
     {
-        "name": "Paulius",
-        "progress": "60"
+        id: 1,
+        name: 'Paulius'
     },
     {
-        "name": "Tomas",
-        "progress": "121"
+        id: 2,
+        name: 'Tomas'
     },
     {
-        "name": "Vytautas",
-        "progress": "5"
+        id: 3,
+        name: 'Julius'
     },
     {
-        "name": "Mindaugas",
-        "progress": "0"
+        id: 4,
+        name: 'Robertas'
     },
     {
-        "name": "Julius",
-        "progress": "240"
+        id: 5,
+        name: 'Mindaugas'
+    },
+    {
+        id: 6,
+        name: 'Vytautas Kirka'
+    },
+    {
+        id: 7,
+        name: 'Vytautas Kazlas'
     }
-];
+  ];
 
-const maxToday = 240;
+function idToName(id){
+    return users.filter((user) => {
+        return user.id === id
+    })[0].name
+}
 
-const Dashboard = () => {
+const todayMaxAmount = getDaysPassedSinceStart() * 20;
+
+function getDaysPassedSinceStart(){
+    return Math.ceil(Math.abs(new Date() - new Date(2020,2,23)) / (1000 * 60 * 60 * 24)); 
+}
+
+function Dashboard() {
+  const [workouts, setWorkouts] = useState([]);
+
+  useEffect(() => {
+    axios.get(`./api/Workouts/TodaysProgress`)
+    .then(res => {
+        setWorkouts(res.data);
+        console.log(res.data);
+    });
+  }, []);
+
   return (
         <div id="dashboard">
             <h3>Daily progress</h3>
             <div id="progress-list">
                 {
-                    data.map((obj, index) => {
-                        let progressInPercents = (obj.progress / maxToday * 100).toFixed(0);
+                  workouts.map((obj, index) => {
+                        let progressInPercents = obj.amount / todayMaxAmount * 100;
                         return  <div className="participant" key={index}>
-                                    <div className="name">{obj.name}</div>
-                                    <div className="progress-max-value">
-                                        <div className="progress-current-value" style={{width: progressInPercents + '%'}}> {progressInPercents}%</div>
+                                    <div className="name">{idToName(obj.userID)}</div>
+                                    <div className="progress-max">
+                                        <div className="progress-current" style={{width: progressInPercents + '%'}}>{obj.amount}</div>
                                     </div>
+                                    <div className="progress-missing">{ todayMaxAmount  - obj.amount}</div>
                                 </div>
                     })
                 }
