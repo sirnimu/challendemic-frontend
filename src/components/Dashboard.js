@@ -49,7 +49,7 @@ function Dashboard() {
   const [workouts, setWorkouts] = useState([]);
 
   useEffect(() => {
-    axios.get(`./api/Workouts/TodaysProgress`)
+    axios.get(`https://capi-dot-glass-sylph-272217.appspot.com/api/Workouts/TodaysProgress`)
     .then(res => {
         setWorkouts(res.data);
         console.log(res.data);

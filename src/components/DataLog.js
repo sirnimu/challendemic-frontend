@@ -43,7 +43,7 @@ function nameToId(name){
 
 
 function onButtonClick(obj){
-  axios.post(`./api/Workouts/`, obj)
+  axios.post(`https://capi-dot-glass-sylph-272217.appspot.com//api/Workouts/`, obj)
       .then(res => {
         console.log(obj);
       })
