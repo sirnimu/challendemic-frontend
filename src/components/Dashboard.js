@@ -13,7 +13,7 @@ function Dashboard(props) {
 
   useEffect(() => {
     async function getTodaysProgress(){
-        await axios.get(`api/Workouts/TodaysProgress`)
+        await axios.get(`https://capi-dot-glass-sylph-272217.appspot.com/api/Workouts/TodaysProgress`)
         .then(res => {
             setTodayWorkouts(res.data);
         });

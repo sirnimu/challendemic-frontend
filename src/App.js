@@ -11,7 +11,7 @@ const App = () => {
 
   const addWorkout = async function (e){
     e.preventDefault();
-    let users = await axios.get(`api/Users`);
+    let users = await axios.get(`https://capi-dot-glass-sylph-272217.appspot.com/api/Users`);
 
     let newWorkout = {
       "userID": users.data.filter((user) => { return user.name === workout.name })[0].id,
