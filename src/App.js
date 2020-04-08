@@ -11,6 +11,7 @@ const App = () => {
 
   const addWorkout = async function (e){
     e.preventDefault();
+    const APIBaseURL = 'https://cors-anywhere.herokuapp.com/' + 'https://capi-dot-glass-sylph-272217.appspot.com';
     let users = await axios.get(`${APIBaseURL}/api/Users`);
 
     let newWorkout = {
@@ -18,7 +19,6 @@ const App = () => {
       "amount": Number.parseInt(workout.amount)
     };
 
-    const APIBaseURL = 'https://cors-anywhere.herokuapp.com/' + 'https://capi-dot-glass-sylph-272217.appspot.com';
     await axios.post(`${APIBaseURL}api/Workouts/`, newWorkout);
 
     setUpdate(newWorkout);
