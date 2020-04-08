@@ -19,7 +19,7 @@ const App = () => {
       "amount": Number.parseInt(workout.amount)
     };
 
-    await axios.post(`${APIBaseURL}api/Workouts/`, newWorkout);
+    await axios.post(`https://capi-dot-glass-sylph-272217.appspot.com/api/Workouts/`, newWorkout);
 
     setUpdate(newWorkout);
 
