@@ -1,21 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-const todayMaxAmount = getDaysPassedSinceStart() * 20;
-
-
-
-function getDaysPassedSinceStart(){
-    return Math.ceil(Math.abs(new Date() - new Date(2020,2,23)) / (1000 * 60 * 60 * 24)); 
+function getDaysPassedSinceStart(startDate){
+    return Math.ceil(Math.abs(new Date() - startDate) / (1000 * 60 * 60 * 24)); 
 };
+
+const todayMaxAmount = getDaysPassedSinceStart(new Date(2020, 2, 23)) * 20;
 
 function Dashboard(props) {
   const [todayWorkouts, setTodayWorkouts] = useState([]);
 
   useEffect(() => {
     async function getTodaysProgress(){
-        const APIBaseURL = 'https://cors-anywhere.herokuapp.com/' + 'https://capi-dot-glass-sylph-272217.appspot.com';
-        await axios.get(`${APIBaseURL}/api/Workouts/TodaysProgress`)
+        await axios.get(`https://capi-dot-glass-sylph-272217.appspot.com/api/Workouts/TodaysProgress`)
         .then(res => {
             setTodayWorkouts(res.data);
         });

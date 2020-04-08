@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 
 const DataLog = (props) => {
   return (
@@ -20,7 +20,9 @@ const DataLog = (props) => {
           <input type="text"  value={props.state.amount} className="input" onChange={(e)=>{props.setState({name: props.state.name, amount: e.target.value})}}></input> 
         </div>
 
-        <button type='submit' onClick={props.onSubmit}>Add workout</button>
+        <button type='submit' disabled={props.isLoading} onClick={props.onSubmit} style={{backgroundColor: props.isLoading ? '#222' : '#181717'}}>
+          {props.isLoading ? 'Loading...' : 'Add workout'}
+        </button>
       </form>
     </div>
   )
