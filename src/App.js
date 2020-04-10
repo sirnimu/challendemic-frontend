@@ -1,42 +1,25 @@
-import React, {useState}from 'react';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
-import Dashboard from './components/Dashboard';
-import DataLog from './components/DataLog';
+import Home from './components/Home';
+import Error from './components/Error';
 import Spreadsheet from './components/Spreadsheet';
-import axios from 'axios';
+import Statistics from './components/Statistics';
 import './styles/app.scss';
 
 const App = () => {
-  const [workout, setWorkout] = useState({amount: 0, name: localStorage.getItem('lastUsernameUsed') || ''});
-  const [isLoading, setLoading] = useState(false);
-  const [update, setUpdate] = useState({});
-
-  const addWorkout = async function (e){
-    setLoading(true);
-    let users = await axios.get(`https://capi-dot-glass-sylph-272217.appspot.com/api/Users`);
-    
-    let newWorkout = {
-      "userID": users.data.filter((user) => { return user.name === workout.name })[0].id,
-      "amount": Number.parseInt(workout.amount)
-    };
-
-    await axios.post(`https://capi-dot-glass-sylph-272217.appspot.com/api/Workouts/`, newWorkout);
-
-    setUpdate(newWorkout);
-
-    localStorage.setItem('lastUsernameUsed', workout.name);
-    
-    setLoading(false);
-  }
 
   return (
     <>
-         <Header />
-         <main>
-            <Dashboard update={update} isLoading={isLoading}/>
-            <DataLog onSubmit={addWorkout} isLoading={isLoading}  setLoading={setLoading} state={workout} setState={setWorkout}/>
-            <Spreadsheet />
-         </main>
+    <BrowserRouter>
+      <Header />
+      <Switch>
+        <Route path="/" component={Home} exact />
+        <Route path="/statistics" component={Statistics} exact />
+        <Route path="/sheets" component={Spreadsheet} />
+        <Route component={Error} />
+      </Switch>
+    </BrowserRouter>
     </>
   )
 }

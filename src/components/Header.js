@@ -1,14 +1,15 @@
 import React from 'react';
-import logo from '../styles/res/Challendemic-logo-horizontal.png'; 
+import { Link } from "react-router-dom";
+import logo from '../assets/images/Challendemic-logo-horizontal.png'; 
 
 const Header = () => {
   return (
     <header>
-      <img src={logo} alt="logo"></img>
+      <Link to="/"><img src={logo} alt="logo"></img></Link>
       <nav>
-        <div>Podium</div>
-        <div>Graphs</div>
-        <div>Settings</div>
+        <Link to="/">Home</Link>
+        <Link to="/statistics">Statistics</Link>
+        <Link to="/sheets">Spreadsheet</Link>
       </nav>
     </header>
   )

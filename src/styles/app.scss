@@ -4,11 +4,6 @@
   box-sizing: border-box;
 }
 
-:focus {
-  outline: none;
-  box-shadow: 0 0 5px 3px rgba(255, 255, 255, 0.6);
-}
-
 html {
   width: 100%;
   height: 100%;
@@ -19,7 +14,7 @@ html {
     height: 100%;
     background-color: #5A020E;
     color: white;
-    background-image: url("./res/background-widescreen-hd.jpg");
+    background-image: url("../assets/images/background-widescreen-hd.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -71,29 +66,19 @@ header {
     height: 100%;
     float: right;
 
-    div {
+    a {
       position: relative;
+      text-decoration: none;
       width: 100%;
       padding: 10px 30px;
       line-height: 60px;
       font-size: 24px;
       text-align: center;
       cursor: pointer;
+      color: #fff;
     }
 
-    div:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      top: 0;
-      margin: auto;
-      height: 50%;
-      width: 1px;
-      border-right: 1px solid #111;
-    }
-
-    div:hover {
+    a:hover {
       background-color: #222;
     }
   }
@@ -144,6 +129,11 @@ header {
 }
 
 #data-log {
+  :focus {
+    outline: none;
+    box-shadow: 0 0 5px 3px rgba(255, 255, 255, 0.6);
+  }
+  
   form {
     display: flex;
     justify-content: center;
