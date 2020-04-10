@@ -1,11 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-function getDaysPassedSinceStart(startDate){
-    return Math.ceil(Math.abs(new Date() - startDate) / (1000 * 60 * 60 * 24)); 
-};
-
-const todayMaxAmount = getDaysPassedSinceStart(new Date(2020, 2, 23)) * 20;
+const todayMaxAmount = 200;
 
 function Dashboard(props) {
   const [todayWorkouts, setTodayWorkouts] = useState([]);

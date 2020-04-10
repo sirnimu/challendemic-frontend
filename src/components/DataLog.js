@@ -11,8 +11,8 @@ const DataLog = (props) => {
         </div>
 
         <div className='row'>
-          <div className='label'>Time</div>
-          <div className="input">Now</div>
+          <div className='label'>Workout</div>
+          <div className="input">Pushup</div>
         </div>
  
         <div className='row'>
@@ -20,7 +20,7 @@ const DataLog = (props) => {
           <input type="text"  value={props.state.amount} className="input" onChange={(e)=>{props.setState({name: props.state.name, amount: e.target.value})}}></input> 
         </div>
 
-        <button type='submit' disabled={props.isLoading} onClick={props.onSubmit} style={{backgroundColor: props.isLoading ? '#222' : '#181717'}}>
+        <button type='submit' disabled={props.isLoading} onClick={props.onSubmit} style={{backgroundColor: props.isLoading ? '#65101E' : '#7F1526'}}>
           {props.isLoading ? 'Loading...' : 'Add workout'}
         </button>
       </form>

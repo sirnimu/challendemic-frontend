@@ -1,5 +1,11 @@
 @import "fonts";
 
+$color-primary: #7F1526;
+$color-primary-darker: #65101E;
+$color-secondary: #0e1111;
+$color-secondary-lighter: #232b2b;
+$color-white: #FFFFFF;
+
 * {
   box-sizing: border-box;
 }
@@ -12,12 +18,8 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #5A020E;
-    color: white;
-    background-image: url("../assets/images/background-widescreen-hd.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    background-color: $color-secondary;
+    color: $color-white;
     font-family: WalkwayRounded, sans-serif;
     font-size: 18px;
 
@@ -47,39 +49,87 @@ html {
 
 header {
   width: 100%;
-  height: 80px;
-  background-color: #181717;
-  color: #fff;
-  overflow: hidden;
+  height: 70px;
+  background-color: $color-primary;
+  color: $color-white;
+  display: flex;
 
-  img {
+  .logo {
     float: left;
     height: 40px;
     width: auto;
-    margin: 20px 40px;
+    margin: 15px 40px;
     cursor: pointer;
   }
 
   nav {
     display: flex;
-    width: 50%;
     height: 100%;
     float: right;
 
     a {
       position: relative;
-      text-decoration: none;
-      width: 100%;
-      padding: 10px 30px;
-      line-height: 60px;
+      padding: 0 20px;
+      line-height: 70px;
       font-size: 24px;
       text-align: center;
+      text-decoration: none;
+      color: $color-white;
       cursor: pointer;
-      color: #fff;
     }
 
     a:hover {
-      background-color: #222;
+      background-color: $color-primary-darker;
+    }
+
+    .expand-icon {
+      display: none;
+      position: relative;
+      width: 70px;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  header {
+    justify-content: space-between;
+
+    nav {
+      a {
+        display: none;
+      }
+  
+      .expand-icon {
+        display: block;
+      }
+    }
+
+    &.expanded {
+      .logo {
+        display: none;
+      }
+
+      .expand-icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        flex-direction: column;
+        position: relative;
+        width: 100%;
+        overflow: visible;
+
+        a {
+          display: block;
+          background-color: $color-primary;
+        }
+      }
     }
   }
 }
@@ -103,7 +153,7 @@ header {
         min-width: 150px;
         width: 100%;
         height: 20px;
-        border: 1px solid #181717;
+        border: 1px solid $color-primary;
         border-radius: 8px;
         color: white;
         font-size: 14px;
@@ -113,7 +163,7 @@ header {
           top: 0;
           left: 0;
           height: 20px;
-          background-color: #181717;
+          background-color: $color-primary;
           border-radius: 5px;
           line-height: 20px;
           text-align: center;
@@ -131,7 +181,7 @@ header {
 #data-log {
   :focus {
     outline: none;
-    box-shadow: 0 0 5px 3px rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 7px 3px rgba(255, 255, 255, 0.3);
   }
   
   form {
@@ -160,9 +210,9 @@ header {
       margin: 5px 10px;
       text-align: left;
       background: transparent;
-      border: 1px solid white;
+      border: 1px solid $color-white;
       border-radius: 10px;
-      color: white;
+      color: $color-white;
       text-align: center;
     }
 
@@ -170,8 +220,7 @@ header {
       margin-top: 20px;
       width: 225px;
       border: none;
-      color: white;
-      background-color: #181717;
+      color: $color-white;
       border-radius: 20px;
       text-align: center;
       padding: 5px 50px;
@@ -181,7 +230,7 @@ header {
     }
 
     button:hover {
-      background-color: #222;
+      background-color: $color-secondary-lighter;
     }
 
     button:active {
