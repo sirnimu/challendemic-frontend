@@ -10,6 +10,13 @@ import './styles/app.scss';
 
 const App = () => {
 
+  (function(){
+    if(!localStorage.getItem('lastWorkoutTypeActive')){
+      localStorage.setItem('lastWorkoutTypeActive', 'pushup');
+    }
+
+  })();
+
   return (
     <>
     <BrowserRouter>

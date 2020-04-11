@@ -50,7 +50,8 @@ html {
 header {
   width: 100%;
   height: 70px;
-  background-color: $color-primary;
+  background: $color-primary;
+  background: linear-gradient(0deg, $color-primary 20%, $color-primary-darker 80%);
   color: $color-white;
   display: flex;
 
@@ -69,7 +70,7 @@ header {
 
     a {
       position: relative;
-      padding: 0 20px;
+      padding: 0 25px;
       line-height: 70px;
       font-size: 24px;
       text-align: center;
@@ -195,6 +196,43 @@ header {
       justify-content: center;
     }
 
+    .workout-toggle {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+      border: 1px solid $color-white;
+      border-radius: 10px;
+
+      div:first-child{
+        border-radius: 9px 0 0 9px;
+      }
+
+      div:last-child {
+        border-radius: 0 9px 9px 0;
+      }
+
+      .active {
+        min-width: 75px;
+        padding: 5px 10px;
+        text-align: center;
+        background: $color-white;
+        color: $color-secondary;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .non-active {
+        min-width: 75px;
+        padding: 5px 10px;
+        text-align: center;
+        background: transparent;
+        border-radius: 10px;
+        color: $color-white;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+
     .label {
       min-width: 50px;
       height: 25px;
@@ -236,17 +274,5 @@ header {
     button:active {
       transform: translateY(-2px);
     }
-  }
-}
-
-.spreadsheet {
-  width: 100%;
-  height: 100%;
-  margin-top: 50px;
-
-  iframe {
-    width: 100%;
-    min-height: 500px;
-    height: 100%;
   }
 }

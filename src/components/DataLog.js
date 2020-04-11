@@ -1,28 +1,36 @@
 import React from 'react';
+import WorkoutTypeToggle from './WorkoutTypeToggle';
 
 const DataLog = (props) => {
+  const [activeWorkout, setActiveWorkout] = React.useState(localStorage.getItem('lastWorkoutTypeActive'));
+
+  const onAmountInputChange = function(e){
+    props.setState({name: props.state.name, type: activeWorkout, amount: e.target.value});
+  };
+
   return (
     <div id="data-log">
       <h3>Workout</h3> 
       <form>
         <div className='row'>
-          <div className='label'>Name</div>
-          <input value={props.state.name} onChange={(e)=>{props.setState({name: e.target.value, amount: props.state.amount})}} className="input"></input>
+          <WorkoutTypeToggle activeWorkoutHook={[activeWorkout, setActiveWorkout]} setState={props.setState} state={props.state} />
         </div>
 
         <div className='row'>
-          <div className='label'>Workout</div>
-          <div className="input">Pushup</div>
+          <div className='label'>Name</div>
+          <input value={props.state.name} onChange={(e)=>{props.setState({name: e.target.value, type: activeWorkout, amount: props.state.amount})}} className="input"></input>
         </div>
  
         <div className='row'>
-          <div className='label'>Amount</div>
-          <input type="text"  value={props.state.amount} className="input" onChange={(e)=>{props.setState({name: props.state.name, amount: e.target.value})}}></input> 
+          <div className='label'>{activeWorkout === 'plank' ? 'Duration' : 'Amount'}</div>
+          <input type="text" value={props.state.amount} className="input" onChange={onAmountInputChange}></input> 
         </div>
 
         <button type='submit' disabled={props.isLoading} onClick={props.onSubmit} style={{backgroundColor: props.isLoading ? '#65101E' : '#7F1526'}}>
           {props.isLoading ? 'Loading...' : 'Add workout'}
         </button>
+
+        {props.error.message ? <div className='error'>{props.error.message}</div> : null }
       </form>
     </div>
   )
